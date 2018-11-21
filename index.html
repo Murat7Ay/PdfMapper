@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Murat AY</title>
+</head>
+<style>
+	#canvas-wrap { position:relative;  }
+	#canvas-wrap canvas { position:absolute; top:0; left:0; z-index:0 }
+	body {
+        margin: 0;
+        padding: 0;
+        background-color: #FAFAFA;
+        font: 12pt "Tahoma";
+    }
+    * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+    .page {
+        width: 794px;
+        min-height: 1122px;
+        padding: 2cm;
+        margin: 1cm auto;
+        border: 1px #D3D3D3 solid;
+        border-radius: 5px;
+        background: white;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .subpage {
+        padding: 1cm;
+        border: 5px red solid;
+        height: 256mm;
+        outline: 2cm #FFEAEA solid;
+    }    
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    .resize-drag {
+    	position: absolute;
+    	z-index: 9999;
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+ /* border-radius: 8px;*/
+  padding: 20px;
+  margin: 30px 20px;
+  touch-action: none;
+
+  width: 120px;
+
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+
+#drag-1 {
+  z-index: 9999;
+  position: absolute;
+  width: 25%;
+  height: 40%;
+  min-height: 6.5em;
+  margin: 2%;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 2%;
+  user-select: none;
+  -webkit-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+}
+
+a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.previous {
+    background-color: #f1f1f1;
+    color: black;
+}
+
+.next {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+</style>
+<body>
+	<p id="xy"></p>
+<a href="#" onclick="window.goBack()" class="previous round">&#8249;</a>
+<a href="#" onclick="window.goForward()" class="next round">&#8250;</a>
+<input type="file" id="pdf-upload"/>
+<hr/>
+<div id="drag-1" class="draggable">
+  <p> You can drag one element </p>
+</div>
+<div id="canvas-wrap" class="page">
+	<div class="resize-drag">
+     
+  </div>
+<canvas></canvas>	
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js'></script>
+  <script src="https://unpkg.com/interactjs@1.3.4/dist/interact.min.js"></script>
+  <script  src="js/index.js"></script>
+</body>
+</html>
