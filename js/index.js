@@ -1,61 +1,121 @@
+
+  var coloumnName = document.getElementById('kolon');
+  var fontSize = document.getElementById('fontSize');
+  var fontType = document.getElementById('fontType');
+  var isBold = document.getElementById('bold');
+  var isItalic = document.getElementById('italic');
+  var isVertical = document.getElementById('vertical');
+  var isPhoto = document.getElementById('isphoto');
+  var isControl = document.getElementById('iscontrol');
+  var currentPageNumber = document.getElementById('pageNumber');
+  var pagination = document.getElementById('pagination');
+  var maxPage = document.getElementById('maxx');
+  var mapDescription = document.getElementById('description');
+  var container = document.getElementById('canvas-wrap');
+  var canvas = document.querySelector("canvas");
+
+
+
+
 window.removeResizeDiv = function(e){
   console.log(e)
-  var parentDiv = e.offsetParent; parentDiv.parentNode.removeChild(parentDiv);
+  var parentDiv = e.offsetParent; 
+  parentDiv.parentNode.removeChild(parentDiv);
 }
 
 document.querySelector('#createbtn').addEventListener('click',function(e){
-  console.log(e)
-  var coloumnName = document.querySelector('#kolon')
-  document.getElementById('canvas-wrap').innerHTML += '<div class="resize-drag"><span class="close" onclick="removeResizeDiv(this)">&times;</span></div>';
-  changePageNumber(muratPageNumberNow)
+  var colValue = coloumnName.options[coloumnName.selectedIndex].text;
+  var fontSizeValue = fontSize.options[fontSize.selectedIndex].text;
+  var fontTypeValue = fontType.options[fontType.selectedIndex].text;
+  var isBoldValue = isBold.checked;
+  var isItalicValue = isItalic.checked;
+  var isVerticalValue = isVertical.checked;
+  var isPhotoValue = isPhoto.checked;
+  var isControlValue = isControl.checked;
+  var currentPageNumberValue = currentPageNumber.innerText;
+  var mapDescriptionValue = mapDescription.value;
+  console.log(mapDescriptionValue,mapDescription)
+  var newDiv = document.createElement('div');
+  newDiv.setAttribute('data-coloumnName',colValue);
+  newDiv.setAttribute('data-fontSize',fontSizeValue);
+  newDiv.setAttribute('data-fontType',fontTypeValue);
+  newDiv.setAttribute('data-isBold',isBoldValue);
+  newDiv.setAttribute('data-isItalic',isItalicValue);
+  newDiv.setAttribute('data-isVertical',isVerticalValue);
+  newDiv.setAttribute('data-isPhoto',isPhotoValue);
+  newDiv.setAttribute('data-isControl',isControlValue);
+  newDiv.setAttribute('data-pageNumber',currentPageNumberValue);
+  newDiv.setAttribute('data-description',mapDescriptionValue);
+  newDiv.className = "resize-drag";
+  newDiv.appendChild(document.createTextNode(colValue))
+  var deleteSpan = document.createElement('span');
+  deleteSpan.className = "close";
+  deleteSpan.onclick = function(){
+    this.parentElement.remove();
+  }
+  deleteSpan.appendChild(document.createTextNode("x"));
+  newDiv.appendChild(deleteSpan);
+  container.appendChild(newDiv);
 })
 
-var muratPdf;
-var muratPdfNumbers;
-var muratPageNumberNow;
+var pdfContent;
+var pdfContentNumbers;
+var pdfContentCurrentPageNumber = 0;
 
 window.goBack= function goBack(){
-    if(muratPageNumberNow === 1){
+    if(pdfContentCurrentPageNumber === 1){
       return;
     }
-    muratPageNumberNow = muratPageNumberNow-1;
-    changePageNumber(muratPageNumberNow)
+    pdfContentCurrentPageNumber = pdfContentCurrentPageNumber-1;
+    currentPageNumber.innerHTML = pdfContentCurrentPageNumber;
+    pagination.innerHTML = pdfContentCurrentPageNumber;
+    changePageNumber(pdfContentCurrentPageNumber)
   }
 
   window.goForward = function goForward(){
-    if(muratPageNumberNow === muratPdfNumbers){
+    if(pdfContentCurrentPageNumber === pdfContentNumbers){
       return;
     }
-    muratPageNumberNow = muratPageNumberNow+1;
-    changePageNumber(muratPageNumberNow)
+    pdfContentCurrentPageNumber = pdfContentCurrentPageNumber+1;
+    currentPageNumber.innerHTML = pdfContentCurrentPageNumber;
+    pagination.innerHTML = pdfContentCurrentPageNumber;
+    changePageNumber(pdfContentCurrentPageNumber)
   }
 
   
+  function hideDivs(){
+    var resizeDivs = document.querySelectorAll('[data-pagenumber]').forEach(function(el){
+      if(el.getAttribute('data-pagenumber')==pdfContentCurrentPageNumber){
+          el.style.display = "";}else{
+            el.style.display = "none"
+          }
+    });
+
+
+
+    //="'+pdfContentCurrentPageNumber+'"]')
+  }
+
   function changePageNumber(pageNumber){
-    pdfjsLib.getDocument(muratPdf).then(function(pdf) {
-      // you can now use *pdf* here
-      console.log("the pdf has ",pdf.numPages, "page(s).")
+
+hideDivs();
+
+    pdfjsLib.getDocument(pdfContent).then(function(pdf) {
       pdf.getPage(pageNumber).then(function(page) {
-        // you can now use *page* here
         var viewport = page.getViewport(1.3338);
         viewport.height=1122.519685039;
         viewport.width=793.700787402;
-        var canvas = document.querySelector("canvas")
         canvas.height = viewport.height;
         canvas.width = viewport.width;
-
-
         page.render({
           canvasContext: canvas.getContext('2d'),
           viewport: viewport
         });
       });
-
     });
   }
 
 document.querySelector("#pdf-upload").addEventListener("change", function(e){
-	var canvasElement = document.querySelector("canvas")
 	var file = e.target.files[0]
 	if(file.type != "application/pdf"){
 		console.error(file.name, "is not a pdf file.")
@@ -69,19 +129,18 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
 
 	fileReader.onload = function() {
 		var typedarray = new Uint8Array(this.result);
-    muratPdf = typedarray;
+    pdfContent = typedarray;
 		pdfjsLib.getDocument(typedarray).then(function(pdf) {
-			// you can now use *pdf* here
-			console.log("the pdf has ",pdf.numPages, "page(s).")
-      muratPageNumberNow = 1;
-      muratPdfNumbers = pdf.numPages;
-
+      pdfContentCurrentPageNumber = 1;
+      currentPageNumber.innerHTML = 1;
+      pagination.innerHTML = 1;
+      pdfContentNumbers = pdf.numPages;
+      maxPage.innerHTML = pdf.numPages;
 			pdf.getPage(1).then(function(page) {
 				// you can now use *page* here
 				var viewport = page.getViewport(1.3338);
 				viewport.height=1122.519685039;
 				viewport.width=793.700787402;
-				var canvas = document.querySelector("canvas")
 				canvas.height = viewport.height;
 				canvas.width = viewport.width;
 
@@ -97,8 +156,6 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
 
 	fileReader.readAsArrayBuffer(file);
 })
-
-
 
  function dragMoveListener (event) {
   var div = document.getElementsByClassName('resize-drag')[0];
@@ -123,7 +180,7 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
 
 interact('.draggable')
   .draggable({
-    ignoreFrom: '.ignore',
+    ignoreFrom: '#ignore',
     // enable inertial throwing
     inertia: true,
     // keep the element within the area of it's parent
@@ -195,7 +252,7 @@ function getPointXY(event){
 
   var target = event.currentTarget;
   var div = document.getElementsByClassName('resize-drag')[0];
-  var parentPos = document.getElementById('canvas-wrap').getBoundingClientRect(),
+  var parentPos = container.getBoundingClientRect(),
       childrenPos = target.getBoundingClientRect(),
       relativePos = {};
 

@@ -7,16 +7,16 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/dist/lit.css" />
    </head>
    <body>
-      <a href="#" onclick="window.goBack()" class="previous round">&#8249;</a>
-      <a href="#" onclick="window.goForward()" class="next round">&#8250;</a>
       <input type="file" id="pdf-upload"/>
+      <a href="#" onclick="window.goBack()" class="previous round">&#8249;</a><span id="pagination">0</span> / <span id="maxx">0</span>
+      <a href="#" onclick="window.goForward()" class="next round">&#8250;</a>
       <hr/>
       <div id="drag-1" class="draggable">
          <div class="row">Taşı</div>
-         <div class="ignore">
+         <div id="ignore">
             <div class="row">
                Kolon seçiniz
-               <select id="kolon" class="card w-100">
+               <select id="kolon" class="card w-100 murat">
                   <option selected data-coloumnId="-1">Seçiniz</option>
                   <option data-coloumnId="2687">AD</option>
                   <option data-coloumnId="2683">ADRES</option>
@@ -49,62 +49,63 @@
             </div>
             <div class="row">
                Font büyüklüğü
-               <select id="fontSize" class="card w-100">
+               <select id="fontSize" class="card w-100 murat">
                   <option selected data-fontSize="-1">Seçiniz</option>
-                  <option selected data-fontSize="10">10</option>
-                  <option selected data-fontSize="12">12</option>
-                  <option selected data-fontSize="14">14</option>
-                  <option selected data-fontSize="16">16</option>
+                  <option  data-fontSize="10">10</option>
+                  <option  data-fontSize="12">12</option>
+                  <option  data-fontSize="14">14</option>
+                  <option  data-fontSize="16">16</option>
                </select>
             </div>
             <div class="row">
                Font
-               <select id="fontType" class="card w-100">
+               <select id="fontType" class="card w-100 murat">
                   <option selected data-fontType="-1">Seçiniz</option>
-                  <option selected data-fontType="Mono">Mono</option>
-                  <option selected data-fontType="Date">Date</option>
-                  <option selected data-fontType="Verdana">Verdana</option>
-                  <option selected data-fontType="Times New Roman">Times New Roman</option>
-                  <option selected data-fontType="Arial">Arial</option>
-                  <option selected data-fontType="Comic Sans MS">Comic Sans MS</option>
-                  <option selected data-fontType="Tahoma">Tahoma</option>
-                  <option selected data-fontType="Barcode">Barcode</option>
-                  <option selected data-fontType="OtherDocumentBarcode">OtherDocumentBarcode</option>
-                  <option selected data-fontType="OnlyBarcode">OnlyBarcode</option>
+                  <option  data-fontType="Mono">Mono</option>
+                  <option  data-fontType="Date">Date</option>
+                  <option  data-fontType="Verdana">Verdana</option>
+                  <option  data-fontType="Times New Roman">Times New Roman</option>
+                  <option  data-fontType="Arial">Arial</option>
+                  <option  data-fontType="Comic Sans MS">Comic Sans MS</option>
+                  <option  data-fontType="Tahoma">Tahoma</option>
+                  <option  data-fontType="Barcode">Barcode</option>
+                  <option  data-fontType="OtherDocumentBarcode">OtherDocumentBarcode</option>
+                  <option  data-fontType="OnlyBarcode">OnlyBarcode</option>
                </select>
             </div>
             <div class="row">
                <hr>
-               <input id="bold" type="checkbox">
+               <input id="bold" type="checkbox" class="murat">
                Bold
             </div>
             <div class="row">
                <hr>
-               <input id="italic" type="checkbox">
+               <input id="italic" type="checkbox" class="murat">
                İtalic
             </div>
             <div class="row">
                <hr>
-               <input id="vertical" type="checkbox">
+               <input id="vertical" type="checkbox" class="murat">
                Vertical
             </div>
             <div class="row">
                <hr>
-               <input id="isphoto" type="checkbox">
+               <input id="isphoto" type="checkbox" class="murat">
                Image alınacak mı?
             </div>
             <div class="row">
                <hr>
-               <input id="iscontrol" type="checkbox">
+               <input id="iscontrol" type="checkbox" class="murat">
                Kontrol olacak mı?
             </div>
             <div class="row">
                <hr>
-               <h5 id="pageNumber">Doküman seçiniz</h5>
+               <span>Sayfa Numarası:</span><span id="pageNumber" class="murat">0</span>
             </div>
             <div class="row">
+              <hr>
                Açıklama
-               <textarea id="description" class="card w-100" placeholder="Açıklama yazınız"></textarea>
+               <textarea id="description" class="card w-100 murat" placeholder="Açıklama yazınız"></textarea>
                <hr>
                <a id="createbtn" class="btn primary">Oluştur</a>
             </div>
