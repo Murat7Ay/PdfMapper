@@ -15,7 +15,16 @@
   var canvas = document.querySelector("canvas");
 
 
-
+document.getElementById('export').addEventListener('click',function(){
+  var exports =[];
+  
+  var resizeDivs = document.getElementsByClassName('resize-drag');
+console.log(resizeDivs)
+  for (var i = resizeDivs.length - 1; i >= 0; i--) {
+    exports.push( resizeDivs[i].dataset);
+  }
+  console.log(exports)
+})
 
 window.removeResizeDiv = function(e){
   console.log(e)
@@ -59,7 +68,7 @@ document.querySelector('#createbtn').addEventListener('click',function(e){
 })
 
 var pdfContent;
-var pdfContentNumbers;
+var pdfContentNumbers=0;
 var pdfContentCurrentPageNumber = 0;
 
 window.goBack= function goBack(){
