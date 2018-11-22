@@ -1,0 +1,129 @@
+#canvas-wrap {
+  position: relative;
+  float: right;
+  margin-right: 50px;
+}
+
+#canvas-wrap canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #FAFAFA;
+  font: 12pt "Tahoma";
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.page {
+  width: 794px;
+  min-height: 1122px;
+  padding: 2cm;
+  margin: 1cm auto;
+  border: 1px #D3D3D3 solid;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.subpage {
+  padding: 1cm;
+  border: 5px red solid;
+  height: 256mm;
+  outline: 2cm #FFEAEA solid;
+}
+
+@page {
+  size: A4;
+        margin: 0;
+}
+
+.resize-drag {
+  position: absolute;
+  display: inline-block;
+  z-index: 9998;
+  background-color: #29e;
+  color: white;
+  font-size: 20px;
+  font-family: sans-serif;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 30px 20px;
+  touch-action: none;
+  width: 120px;
+  /* This makes things *much* easier */
+  box-sizing: border-box;
+}
+
+.resize-drag .close {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+    background-color: #FFF;
+    padding: 5px 2px 2px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: .2;
+    text-align: center;
+    font-size: 22px;
+    line-height: 10px;
+    border-radius: 50%;
+}
+.resize-drag:hover .close {
+    opacity: 1;
+    background-color: #822a17;
+
+}
+
+
+#drag-1 {
+  overflow-y: auto;
+  z-index: 9999;
+  position: absolute;
+  width: 25%;
+  height: 850px;
+  min-height: 6.5em;
+  margin: 2%;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 2%;
+  user-select: none;
+  -webkit-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}

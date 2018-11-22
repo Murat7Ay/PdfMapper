@@ -1,118 +1,120 @@
 <!DOCTYPE html>
 <html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Murat AY</title>
-</head>
-<style>
-	#canvas-wrap { position:relative;  }
-	#canvas-wrap canvas { position:absolute; top:0; left:0; z-index:0 }
-	body {
-        margin: 0;
-        padding: 0;
-        background-color: #FAFAFA;
-        font: 12pt "Tahoma";
-    }
-    * {
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-    }
-    .page {
-        width: 794px;
-        min-height: 1122px;
-        padding: 2cm;
-        margin: 1cm auto;
-        border: 1px #D3D3D3 solid;
-        border-radius: 5px;
-        background: white;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    .subpage {
-        padding: 1cm;
-        border: 5px red solid;
-        height: 256mm;
-        outline: 2cm #FFEAEA solid;
-    }    
-    @page {
-        size: A4;
-        margin: 0;
-    }
-    .resize-drag {
-    	position: absolute;
-    	z-index: 9999;
-  background-color: #29e;
-  color: white;
-  font-size: 20px;
-  font-family: sans-serif;
- /* border-radius: 8px;*/
-  padding: 20px;
-  margin: 30px 20px;
-  touch-action: none;
-
-  width: 120px;
-
-  /* This makes things *much* easier */
-  box-sizing: border-box;
-}
-
-#drag-1 {
-  z-index: 9999;
-  position: absolute;
-  width: 25%;
-  height: 40%;
-  min-height: 6.5em;
-  margin: 2%;
-  background-color: #29e;
-  color: white;
-  border-radius: 0.75em;
-  padding: 2%;
-  user-select: none;
-  -webkit-transform: translate(0px, 0px);
-          transform: translate(0px, 0px);
-}
-a {
-    text-decoration: none;
-    display: inline-block;
-    padding: 8px 16px;
-}
-
-a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.previous {
-    background-color: #f1f1f1;
-    color: black;
-}
-
-.next {
-    background-color: #4CAF50;
-    color: white;
-}
-
-.round {
-    border-radius: 50%;
-}
-
-</style>
-<body>
-	<p id="xy"></p>
-<a href="#" onclick="window.goBack()" class="previous round">&#8249;</a>
-<a href="#" onclick="window.goForward()" class="next round">&#8250;</a>
-<input type="file" id="pdf-upload"/>
-<hr/>
-<div id="drag-1" class="draggable">
-  <p> You can drag one element </p>
-</div>
-<div id="canvas-wrap" class="page">
-	<div class="resize-drag">
-     
-  </div>
-<canvas></canvas>	
-</div>
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js'></script>
-  <script src="https://unpkg.com/interactjs@1.3.4/dist/interact.min.js"></script>
-  <script  src="js/index.js"></script>
-</body>
+   <head>
+      <meta charset="UTF-8">
+      <title>Murat AY</title>
+      <link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ajusa/lit@latest/dist/lit.css" />
+   </head>
+   <body>
+      <a href="#" onclick="window.goBack()" class="previous round">&#8249;</a>
+      <a href="#" onclick="window.goForward()" class="next round">&#8250;</a>
+      <input type="file" id="pdf-upload"/>
+      <hr/>
+      <div id="drag-1" class="draggable">
+         <div class="row">Taşı</div>
+         <div class="ignore">
+            <div class="row">
+               Kolon seçiniz
+               <select id="kolon" class="card w-100">
+                  <option selected data-coloumnId="-1">Seçiniz</option>
+                  <option data-coloumnId="2687">AD</option>
+                  <option data-coloumnId="2683">ADRES</option>
+                  <option data-coloumnId="2695">AKSESUAR VAR MI</option>
+                  <option data-coloumnId="61">Barcode</option>
+                  <option data-coloumnId="2702">CİHAZI TESLİM ALAN KURYE AD SOYAD-İMZA</option>
+                  <option data-coloumnId="2701">CİHAZI TESLİM EDEN AD SOYAD-İMZA</option>
+                  <option data-coloumnId="65">Date</option>
+                  <option data-coloumnId="2686">Distribitör</option>
+                  <option data-coloumnId="2694">E-POSTA</option>
+                  <option data-coloumnId="2703">FİRMA ADI</option>
+                  <option data-coloumnId="2680">IMEI NO</option>
+                  <option data-coloumnId="2684">İL</option>
+                  <option data-coloumnId="2685">İLÇE</option>
+                  <option data-coloumnId="15">İmza</option>
+                  <option data-coloumnId="2696">KAPATMA MİKTARI</option>
+                  <option data-coloumnId="2697">KAPATMA MİKTARI</option>
+                  <option data-coloumnId="2699">KULAKLIK VAR-YOK</option>
+                  <option data-coloumnId="2681">MARKA</option>
+                  <option data-coloumnId="2682">MODEL</option>
+                  <option data-coloumnId="2690">NOBLG</option>
+                  <option data-coloumnId="2689">SATIŞ KANALI</option>
+                  <option data-coloumnId="2688">SOYAD</option>
+                  <option data-coloumnId="2691">STATÜ ( AÇIK/ KAPALI CİHAZ)</option>
+                  <option data-coloumnId="2700">ŞARJ VAR / YOK</option>
+                  <option data-coloumnId="2693">T.C. NO</option>
+                  <option data-coloumnId="2698">TEKİL ID</option>
+                  <option data-coloumnId="2692">TELEFON NO</option>
+               </select>
+            </div>
+            <div class="row">
+               Font büyüklüğü
+               <select id="fontSize" class="card w-100">
+                  <option selected data-fontSize="-1">Seçiniz</option>
+                  <option selected data-fontSize="10">10</option>
+                  <option selected data-fontSize="12">12</option>
+                  <option selected data-fontSize="14">14</option>
+                  <option selected data-fontSize="16">16</option>
+               </select>
+            </div>
+            <div class="row">
+               Font
+               <select id="fontType" class="card w-100">
+                  <option selected data-fontType="-1">Seçiniz</option>
+                  <option selected data-fontType="Mono">Mono</option>
+                  <option selected data-fontType="Date">Date</option>
+                  <option selected data-fontType="Verdana">Verdana</option>
+                  <option selected data-fontType="Times New Roman">Times New Roman</option>
+                  <option selected data-fontType="Arial">Arial</option>
+                  <option selected data-fontType="Comic Sans MS">Comic Sans MS</option>
+                  <option selected data-fontType="Tahoma">Tahoma</option>
+                  <option selected data-fontType="Barcode">Barcode</option>
+                  <option selected data-fontType="OtherDocumentBarcode">OtherDocumentBarcode</option>
+                  <option selected data-fontType="OnlyBarcode">OnlyBarcode</option>
+               </select>
+            </div>
+            <div class="row">
+               <hr>
+               <input id="bold" type="checkbox">
+               Bold
+            </div>
+            <div class="row">
+               <hr>
+               <input id="italic" type="checkbox">
+               İtalic
+            </div>
+            <div class="row">
+               <hr>
+               <input id="vertical" type="checkbox">
+               Vertical
+            </div>
+            <div class="row">
+               <hr>
+               <input id="isphoto" type="checkbox">
+               Image alınacak mı?
+            </div>
+            <div class="row">
+               <hr>
+               <input id="iscontrol" type="checkbox">
+               Kontrol olacak mı?
+            </div>
+            <div class="row">
+               <hr>
+               <h5 id="pageNumber">Doküman seçiniz</h5>
+            </div>
+            <div class="row">
+               Açıklama
+               <textarea id="description" class="card w-100" placeholder="Açıklama yazınız"></textarea>
+               <hr>
+               <a id="createbtn" class="btn primary">Oluştur</a>
+            </div>
+         </div>
+      </div>
+      <div id="canvas-wrap" class="page">
+         <canvas></canvas>
+      </div>
+      <script src='http://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js'></script>
+      <script src="https://unpkg.com/interactjs@1.3.4/dist/interact.min.js"></script>
+      <script  src="js/index.js"></script>
+   </body>
 </html>
