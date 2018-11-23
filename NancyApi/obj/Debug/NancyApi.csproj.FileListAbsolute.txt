@@ -1,0 +1,9 @@
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\NancyApi.exe.config
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\NancyApi.exe
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\NancyApi.pdb
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\Nancy.dll
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\Nancy.Hosting.Self.dll
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\Nancy.xml
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\bin\Debug\Nancy.Hosting.Self.xml
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\obj\Debug\NancyApi.exe
+C:\Users\muratay\Documents\Visual Studio 2013\Projects\ConsoleTest\NancyApi\obj\Debug\NancyApi.pdb

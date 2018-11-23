@@ -19,21 +19,31 @@ document.getElementById('export').addEventListener('click',function(){
   var exports =[];
   
   var resizeDivs = document.getElementsByClassName('resize-drag');
-console.log(resizeDivs)
   for (var i = resizeDivs.length - 1; i >= 0; i--) {
-    exports.push( resizeDivs[i].dataset);
+    exports.push( Object.assign({}, resizeDivs[i].dataset) );
   }
+  
+  (async () => {
+  const rawResponse = await fetch('http://localhost:7880/printdata', {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(exports)
+  });
   console.log(exports)
+  const content = await rawResponse.json();
+})();
 })
 
 window.removeResizeDiv = function(e){
-  console.log(e)
   var parentDiv = e.offsetParent; 
   parentDiv.parentNode.removeChild(parentDiv);
 }
 
 document.querySelector('#createbtn').addEventListener('click',function(e){
-  var colValue = coloumnName.options[coloumnName.selectedIndex].text;
+  var colValue = coloumnName.options[coloumnName.selectedIndex];
   var fontSizeValue = fontSize.options[fontSize.selectedIndex].text;
   var fontTypeValue = fontType.options[fontType.selectedIndex].text;
   var isBoldValue = isBold.checked;
@@ -43,9 +53,8 @@ document.querySelector('#createbtn').addEventListener('click',function(e){
   var isControlValue = isControl.checked;
   var currentPageNumberValue = currentPageNumber.innerText;
   var mapDescriptionValue = mapDescription.value;
-  console.log(mapDescriptionValue,mapDescription)
   var newDiv = document.createElement('div');
-  newDiv.setAttribute('data-coloumnName',colValue);
+  newDiv.setAttribute('data-coloumnId',colValue.value);
   newDiv.setAttribute('data-fontSize',fontSizeValue);
   newDiv.setAttribute('data-fontType',fontTypeValue);
   newDiv.setAttribute('data-isBold',isBoldValue);
@@ -56,7 +65,7 @@ document.querySelector('#createbtn').addEventListener('click',function(e){
   newDiv.setAttribute('data-pageNumber',currentPageNumberValue);
   newDiv.setAttribute('data-description',mapDescriptionValue);
   newDiv.className = "resize-drag";
-  newDiv.appendChild(document.createTextNode(colValue))
+  newDiv.appendChild(document.createTextNode(colValue.text))
   var deleteSpan = document.createElement('span');
   deleteSpan.className = "close";
   deleteSpan.onclick = function(){
