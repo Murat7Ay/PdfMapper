@@ -47,7 +47,7 @@ body {
 }*/
 
 .ruler {
-border-style: dotted;
+    border-style: dotted;
     width: 50px;
     height: 20px;
     z-index: 99999;
@@ -57,16 +57,17 @@ border-style: dotted;
 .resize-drag {
   position: absolute;
   display: inline-block;
-  z-index: 9998;
-  background-color: #29e;
-  color: white;
-  font-size: 10px;
+  z-index: 998;
+  background-color: rgba(68, 79, 255, 0.6);
+  color: rgba(67, 50, 67, 1);
+  font-size: 12px;
   font-family: sans-serif;
   border-radius: 8px;
   padding: 10px;
   margin: 10px 7px;
   touch-action: none;
   width: 120px;
+  opacity: 5;
   /* This makes things *much* easier */
   box-sizing: border-box;
 }

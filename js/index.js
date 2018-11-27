@@ -224,7 +224,7 @@ interact('.ruler')
     
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
-    //target.textContent =  Math.round(event.rect.width*72/96) + '\u00D7' + Math.round(event.rect.height*72/96);
+    target.textContent =  Math.round(event.rect.width*72/96);
   })
   
 
@@ -270,7 +270,7 @@ interact('#drag-1')
 
     // minimum size
     restrictSize: {
-      min: { width: 40, height: 20 },
+      min: { width: 15, height: 15 },
     },
 
     inertia: true,
