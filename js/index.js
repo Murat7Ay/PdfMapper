@@ -108,23 +108,18 @@ window.goBack= function goBack(){
             el.style.display = "none"
           }
     });
-
-
-
-    //="'+pdfContentCurrentPageNumber+'"]')
   }
 
   function changePageNumber(pageNumber){
 
-hideDivs();
+    hideDivs();
 
     pdfjsLib.getDocument(pdfContent).then(function(pdf) {
       pdf.getPage(pageNumber).then(function(page) {
         var viewport = page.getViewport(1.3338);
-        viewport.height=1122.519685039;
-        viewport.width=793.700787402;
         canvas.height = viewport.height;
         canvas.width = viewport.width;
+        container.setAttribute("style","width:"+canvas.width+"px;height:"+canvas.height+"px");
         page.render({
           canvasContext: canvas.getContext('2d'),
           viewport: viewport
@@ -143,52 +138,40 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
  
 	var fileReader = new FileReader();  
 
-  
-
 	fileReader.onload = function() {
 		var typedarray = new Uint8Array(this.result);
     pdfContent = typedarray;
 		pdfjsLib.getDocument(typedarray).then(function(pdf) {
+      console.log(pdf)
       pdfContentCurrentPageNumber = 1;
       currentPageNumber.innerHTML = 1;
       pagination.innerHTML = 1;
       pdfContentNumbers = pdf.numPages;
       maxPage.innerHTML = pdf.numPages;
 			pdf.getPage(1).then(function(page) {
-				// you can now use *page* here
 				var viewport = page.getViewport(1.3338);
-				viewport.height=1122.519685039;
-				viewport.width=793.700787402;
+        console.log(viewport)
 				canvas.height = viewport.height;
-				canvas.width = viewport.width;
-
-
+				canvas.width = viewport.width;        
+        container.setAttribute("style","width:"+canvas.width+"px;height:"+canvas.height+"px");
 				page.render({
 					canvasContext: canvas.getContext('2d'),
 					viewport: viewport
 				});
 			});
-
 		});
 	};
-
 	fileReader.readAsArrayBuffer(file);
 })
 
  function dragMoveListener (event) {
   var div = document.getElementsByClassName('resize-drag')[0];
-
     var target = event.target,
-        // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
         y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
-
-    // translate the element
     target.style.webkitTransform =
     target.style.transform =
       'translate(' + x + 'px, ' + y + 'px)';
-
-    // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
   }
@@ -196,7 +179,59 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
    window.dragMoveListener = dragMoveListener;
 
 
-interact('.draggable')
+interact('.ruler')
+  .draggable({
+    onmove: window.dragMoveListener,
+    restrict: {
+      //restriction: 'parent',
+      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+    },
+  })
+  .resizable({
+    // resize from all edges and corners
+    edges: { left: true, right: true, bottom: false, top: false },
+
+    // keep the edges inside the parent
+    restrictEdges: {
+      outer: 'parent',
+      endOnly: true,
+    },
+
+    // minimum size
+    restrictSize: {
+      min: { width: 10, height: 20 },
+    },
+
+    inertia: true,
+  })
+  .on('resizemove', function (event) {
+    
+    var target = event.target,
+        x = (parseFloat(target.getAttribute('data-x')) || 0),
+        y = (parseFloat(target.getAttribute('data-y')) || 0);
+  
+    // update the element's style
+    target.style.width  = event.rect.width + 'px';
+    target.style.height = event.rect.height + 'px';
+
+
+    // translate when resizing from top or left edges
+    x += event.deltaRect.left;
+    y += event.deltaRect.top;
+
+    target.style.webkitTransform = target.style.transform =
+        'translate(' + x + 'px,' + y + 'px)';
+    
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+    //target.textContent =  Math.round(event.rect.width*72/96) + '\u00D7' + Math.round(event.rect.height*72/96);
+  })
+  
+
+
+
+
+interact('#drag-1')
   .draggable({
     ignoreFrom: '#ignore',
     // enable inertial throwing

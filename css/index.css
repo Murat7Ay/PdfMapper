@@ -1,7 +1,7 @@
 #canvas-wrap {
   position: relative;
-  float: right;
-  margin-right: 50px;
+  float: left;
+  margin-left: 50px;
 }
 
 #canvas-wrap canvas {
@@ -24,8 +24,8 @@ body {
 }
 
 .page {
-  width: 794px;
-  min-height: 1122px;
+  /*width: 794px;
+  min-height: 1122px;*/
   padding: 2cm;
   margin: 1cm auto;
   border: 1px #D3D3D3 solid;
@@ -41,9 +41,17 @@ body {
   outline: 2cm #FFEAEA solid;
 }
 
-@page {
+/*@page {
   size: A4;
         margin: 0;
+}*/
+
+.ruler {
+border-style: dotted;
+    width: 50px;
+    height: 20px;
+    z-index: 99999;
+
 }
 
 .resize-drag {
@@ -52,11 +60,11 @@ body {
   z-index: 9998;
   background-color: #29e;
   color: white;
-  font-size: 20px;
+  font-size: 10px;
   font-family: sans-serif;
   border-radius: 8px;
-  padding: 20px;
-  margin: 30px 20px;
+  padding: 10px;
+  margin: 10px 7px;
   touch-action: none;
   width: 120px;
   /* This makes things *much* easier */
@@ -75,8 +83,8 @@ body {
     cursor: pointer;
     opacity: .2;
     text-align: center;
-    font-size: 22px;
-    line-height: 10px;
+    font-size: 12px;
+    line-height: 5px;
     border-radius: 50%;
 }
 .resize-drag:hover .close {
@@ -87,6 +95,7 @@ body {
 
 
 #drag-1 {
+  float: right;
   overflow-y: auto;
   z-index: 9999;
   position: absolute;
