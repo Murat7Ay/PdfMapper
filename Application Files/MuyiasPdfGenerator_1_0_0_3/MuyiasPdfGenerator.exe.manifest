@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="MuyiasPdfGenerator.exe" version="1.0.0.3" publicKeyToken="d3c4b476e00716fa" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="MuyiasPdfGenerator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="MuyiasPdfGenerator.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BouncyCastle.Crypto.dll" size="2787928">
+      <assemblyIdentity name="BouncyCastle.Crypto" version="1.8.5.0" publicKeyToken="0E99375E54769942" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>bpSOyVrRywfbkoU3lP6owCL81jLoHU9LM+tnCKXmrDE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.Logging.dll" size="45056">
+      <assemblyIdentity name="Common.Logging" version="3.4.1.0" publicKeyToken="AF08829B84F0328E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>IVUom2LioFwyL36yP/ufh/5IkjvsEnIqEX0AhXNwuw4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.Logging.Core.dll" size="10240">
+      <assemblyIdentity name="Common.Logging.Core" version="3.4.1.0" publicKeyToken="AF08829B84F0328E" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>PYBjJr/OndrN2SK9+cluRd6RcvRaigr0zFFTgc6gGYQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="itextsharp.dll" size="4079616">
+      <assemblyIdentity name="itextsharp" version="5.5.13.1" publicKeyToken="8354AE6D2174DDCA" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>VUC+CCHYMD3JRf0r0cYggs26RiYOUniYX6CGYkLerdI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MuyiasPdfGenerator.exe" size="19408">
+      <assemblyIdentity name="MuyiasPdfGenerator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>gn9QQjnBxYf0VSy6Zsopj1j4AONAEQJyctfPx/Gc10A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="700336">
+      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="MuyiasPdfGenerator.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>fzxBSr45tumrN8SNWWL0IeqRlxoh8+san/F4n6/GZJ4=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=AGVA\Murat AY" issuerKeyHash="42e913398ec32b54002e1414ffd528c5d2edd067" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>XLdl/1ywBzXzS89kCxx6/MtEDslJQ2m9qcFz2I6DSXA=</DigestValue></Reference></SignedInfo><SignatureValue>Oq0AWWA/644YHzPEUJtZUUBSE6EUIfY5jReOSHdj1G3NsvgrtyJKLZLFsUbUGi+4csOiWCYY1fVUMl4dyenJl+Nf/JHv5p/sjtwnDbeB2VZrlCGvV+2HKCW+jYiLiXjrXodCEu5GxA/DfYxsPyn8947gXGG3pEonPIGmyrhLGFU=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>wBuZBeBtGZSQT4szDn7mTI818PZdafUySpu7NjpgBapbTyId7MzA+A6fG/tNjZ3C7AYqCFx4lq+GT7LechsEBnO/mNeQDq6gSBDUSEa6DdUXDqew6Ja23nTAHlbBL+kYVOomeMetWZxAzHVwkXKn4QtKHDpKiH8bkdJTUpgo6EU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="7049838ed873c1a9bd694349c90e44cbfc7a1c0b64cf4bf33507b05cff65b75c" Description="" Url=""><as:assemblyIdentity name="MuyiasPdfGenerator.exe" version="1.0.0.3" publicKeyToken="d3c4b476e00716fa" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=AGVA\Murat AY</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>FREofUgIfIKSag3DDObYO/jIvAc0jDn8Cv/QAi1VeZI=</DigestValue></Reference></SignedInfo><SignatureValue>TjlzrX2Q92x8EIzDiaFUku80Xo5NyBumJnTr2Skb+/WPxWrIQg8Nq5rg+82jJUt0LAbaBr9cDSHgI2gHb865h5BQXFQ6rMoSpaco2raQ3pSphjZzOKHY3BIpiBnxpgecBrrN1oz+XCGql1kgu54yaypVJtErV6rCKpbCJwUxUQU=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wBuZBeBtGZSQT4szDn7mTI818PZdafUySpu7NjpgBapbTyId7MzA+A6fG/tNjZ3C7AYqCFx4lq+GT7LechsEBnO/mNeQDq6gSBDUSEa6DdUXDqew6Ja23nTAHlbBL+kYVOomeMetWZxAzHVwkXKn4QtKHDpKiH8bkdJTUpgo6EU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQElVyE3xMx6tES7nptvBHNTANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAQQBHAFYAQQBcAE0AdQByAGEAdAAgAEEAWTAeFw0yMDA2MjkyMjM0MzZaFw0yMTA2MzAwNDM0MzZaMCUxIzAhBgNVBAMeGgBBAEcAVgBBAFwATQB1AHIAYQB0ACAAQQBZMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAG5kF4G0ZlJBPizMOfuZMjzXw9l1p9TJKm7s2OmAFqltPIh3szMD4Dp8b+02NncLsBioIXHiWr4ZPst5yGwQGc7+Y15AOrqBIENRIRroN1RcOp7DolrbedMAeVsEv6RhU6iZ4x61ZnEDMdXCRcqfhC0ocOkqIfxuR0lNSmCjoRQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAIA4FIXtSxeRL3ng/1Q3WW8ENHY/jjDH932OYmORznReDa+nT0c5nLJGpMVyXfgWIXaIEoUxIUX/0akeZ8mGEQ6VRnAIOeGuvonT8aJMkLPTMM4tkOVIXV8UPMDYDPh+P0O+Ld/1MxTM3Jq8z8NQf6DYlVgl/NXIJbfb1XpWnqRY</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

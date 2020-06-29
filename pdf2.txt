@@ -1,0 +1,30 @@
+[
+   {  
+      "description":"Metin_6",
+      "pdfx":"293.578125",
+      "pdfy":"968.921875"
+   },
+   {  
+      "description":"Metin_5",
+      "pdfx":"99.578125",
+      "pdfy":"1002.921875"
+   },
+   {  
+      "description":"Metin_4",
+      "pdfx":"100.578125",
+      "pdfy":"1036.921875"
+   },
+   {  "description":"Metin_3",
+      "pdfx":"108.578125",
+      "pdfy":"1070.921875"
+   },
+   {  "description":"Metin_2",
+      "pdfx":"118.578125",
+      "pdfy":"1106.921875"
+   },
+   {  
+      "description":"Metin_1",
+      "pdfx":"93",
+      "pdfy":"1139.0234375"
+   }
+]
