@@ -22,8 +22,14 @@ document.getElementById('export').addEventListener('click',function(){
   for (var i = resizeDivs.length - 1; i >= 0; i--) {
     exports.push( Object.assign({}, resizeDivs[i].dataset) );
   }
+  var text = JSON.stringify(exports);
+  navigator.clipboard.writeText(text).then(function() {
+  console.log('Async: Copying to clipboard was successful!');
+}, function(err) {
+  console.error('Async: Could not copy text: ', err);
+});
   
-  (async () => {
+/*  (async () => {
   const rawResponse = await fetch('http://localhost:7880/printdata', {
     method: 'POST',
     mode: 'no-cors',
@@ -34,7 +40,7 @@ document.getElementById('export').addEventListener('click',function(){
   });
   console.log(exports)
   const content = await rawResponse.json();
-})();
+})();*/
 })
 
 window.removeResizeDiv = function(e){
@@ -54,15 +60,16 @@ document.querySelector('#createbtn').addEventListener('click',function(e){
   var currentPageNumberValue = currentPageNumber.innerText;
   var mapDescriptionValue = mapDescription.value;
   var newDiv = document.createElement('div');
-  newDiv.setAttribute('data-coloumnId',colValue.value);
+  
   newDiv.setAttribute('data-fontSize',fontSizeValue);
+  /*newDiv.setAttribute('data-coloumnId',colValue.value);
   newDiv.setAttribute('data-fontType',fontTypeValue);
   newDiv.setAttribute('data-isBold',isBoldValue);
   newDiv.setAttribute('data-isItalic',isItalicValue);
   newDiv.setAttribute('data-isVertical',isVerticalValue);
   newDiv.setAttribute('data-isPhoto',isPhotoValue);
   newDiv.setAttribute('data-isControl',isControlValue);
-  newDiv.setAttribute('data-pageNumber',currentPageNumberValue);
+  newDiv.setAttribute('data-pageNumber',currentPageNumberValue);*/
   newDiv.setAttribute('data-description',mapDescriptionValue);
   newDiv.className = "resize-drag";
   newDiv.appendChild(document.createTextNode(colValue.text))
@@ -149,7 +156,7 @@ document.querySelector("#pdf-upload").addEventListener("change", function(e){
       pdfContentNumbers = pdf.numPages;
       maxPage.innerHTML = pdf.numPages;
 			pdf.getPage(1).then(function(page) {
-				var viewport = page.getViewport(1.3338);
+				var viewport = page.getViewport(1);
         console.log(viewport)
 				canvas.height = viewport.height;
 				canvas.width = viewport.width;        
@@ -308,6 +315,8 @@ function getPointXY(event){
   var parentPos = container.getBoundingClientRect(),
       childrenPos = target.getBoundingClientRect(),
       relativePos = {};
+      console.log(parentPos)
+      console.log(childrenPos)
 
   relativePos.centerX =  Math.round((childrenPos.left - parentPos.left+Math.round(div.offsetWidth/2))*72/96) //595,5
   relativePos.centerY =Math.round( Math.abs( Math.round((childrenPos.top - parentPos.top+Math.round(div.offsetHeight/2))*72/96)-841.5)) //841,5
@@ -315,14 +324,19 @@ function getPointXY(event){
   relativePos.x1 = Math.abs( Math.round(parentPos.right - childrenPos.right)*72/96-595.5),
   relativePos.y0 = Math.round(Math.round(Math.round(parentPos.bottom-childrenPos.bottom)*72/96)),
   relativePos.x0 = Math.round(Math.round(childrenPos.left - parentPos.left)*72/96);
+  relativePos.absoluteX =Math.abs( parentPos.x - childrenPos.x);
+  relativePos.absoluteY =Math.abs( parentPos.bottom - childrenPos.bottom + childrenPos.height / 2);
 
-
+    target.setAttribute('data-pdfX',relativePos.absoluteX)
+    target.setAttribute('data-pdfY',relativePos.absoluteY)
+    /*
     target.setAttribute('data-y1', relativePos.y1);
     target.setAttribute('data-x1', relativePos.x1);
     target.setAttribute('data-y0', relativePos.y0);
     target.setAttribute('data-x0', relativePos.x0);
     target.setAttribute('data-xCenter', relativePos.centerX);
     target.setAttribute('data-yCenter', relativePos.centerY);
+    */
 
   return relativePos;
 }
